@@ -103,7 +103,7 @@ class UvResolver(BaseResolver):
                 "compile",
             ]
         return [
-            self.environment.uv_path,
+            uv_path,
             "pip",
             "compile",
         ]
