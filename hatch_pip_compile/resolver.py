@@ -94,9 +94,7 @@ class UvResolver(BaseResolver):
         Resolver Executable
         """
         return [
-            self.environment.virtual_env.python_info.executable,
-            "-m",
-            "uv",
+            self.environment.uv_path,
             "pip",
             "compile",
         ]
