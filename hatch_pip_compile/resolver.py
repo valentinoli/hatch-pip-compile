@@ -95,6 +95,7 @@ class UvResolver(BaseResolver):
         Resolver Executable
         """
         if inspect.getattr_static(self.environment, "uv_path", None):
+            # uv_path is supported for Hatch>=1.10.0
             return [
                 self.environment.uv_path,
                 "pip",
