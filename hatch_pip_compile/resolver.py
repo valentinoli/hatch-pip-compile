@@ -4,6 +4,7 @@ Dependency Resolvers
 
 from __future__ import annotations
 
+import inspect
 import os
 from abc import ABC, abstractmethod
 from typing import ClassVar
@@ -93,17 +94,17 @@ class UvResolver(BaseResolver):
         """
         Resolver Executable
         """
-        uv_path = self.environment.get("uv_path")
-        if uv_path is None:
+        if inspect.getattr_static(self.environment, "uv_path", None):
             return [
-                self.environment.virtual_env.python_info.executable,
-                "-m",
-                "uv",
+                self.environment.uv_path,
                 "pip",
                 "compile",
             ]
+
         return [
-            uv_path,
+            self.environment.virtual_env.python_info.executable,
+            "-m",
+            "uv",
             "pip",
             "compile",
         ]
