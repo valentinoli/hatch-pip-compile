@@ -92,11 +92,21 @@ class UvInstaller(PipInstaller):
         """
         Construct a `pip install` command with the given arguments
         """
-        command = [
-            self.environment.uv_path,
-            "pip",
-            "install",
-        ]
+        uv_path = self.environment.get("uv_path")
+        if uv_path is None:
+            command = [
+                self.environment.virtual_env.python_info.executable,
+                "-m",
+                "uv",
+                "pip",
+                "install",
+            ]
+        else:
+            command = [
+                uv_path,
+                "pip",
+                "install",
+            ]
         add_verbosity_flag(command, self.environment.verbosity, adjustment=-1)
         command.extend(args)
         return command
