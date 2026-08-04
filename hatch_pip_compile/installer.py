@@ -93,9 +93,7 @@ class UvInstaller(PipInstaller):
         Construct a `pip install` command with the given arguments
         """
         command = [
-            "python",
-            "-m",
-            "uv",
+            self.environment.uv_path,
             "pip",
             "install",
         ]
