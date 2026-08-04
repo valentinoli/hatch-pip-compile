@@ -20,12 +20,13 @@ class HatchPipCompileBase:
 
     pypi_dependencies: ClassVar[list[str]] = []
 
-    def __init__(self, environment: PipCompileEnvironment) -> None:
+    def __init__(self, environment: PipCompileEnvironment, uv_path: str) -> None:
         """
         Inject the environment into the base class
         """
         self.environment = environment
         self.pypi_dependencies_installed = False
+        self.uv_path = uv_path
 
     def install_pypi_dependencies(self) -> None:
         """
