@@ -93,6 +93,15 @@ class UvResolver(BaseResolver):
         """
         Resolver Executable
         """
+        uv_path = self.environment.get("uv_path")
+        if uv_path is None:
+            return [
+                self.environment.virtual_env.python_info.executable,
+                "-m",
+                "uv",
+                "pip",
+                "compile",
+            ]
         return [
             self.environment.uv_path,
             "pip",
