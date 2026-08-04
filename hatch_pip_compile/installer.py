@@ -92,18 +92,18 @@ class UvInstaller(PipInstaller):
         """
         Construct a `pip install` command with the given arguments
         """
-        uv_path = self.environment.get("uv_path")
-        if uv_path is None:
+        if inspect.getattr_static(self.environment, "uv_path", None):
+            # uv_path is supported for Hatch>=1.10.0
             command = [
-                self.environment.virtual_env.python_info.executable,
-                "-m",
-                "uv",
+                self.environment.uv_path,
                 "pip",
                 "install",
             ]
         else:
             command = [
-                uv_path,
+                self.environment.virtual_env.python_info.executable,
+                "-m",
+                "uv",
                 "pip",
                 "install",
             ]
