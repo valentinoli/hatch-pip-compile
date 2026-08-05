@@ -143,10 +143,7 @@ python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 [tool.hatch.envs.matrix.overrides]
 matrix.python.dependencies = [
   {value = "hatch>=1.7.0,<1.15", if = ["3.8"]},
-  {value = "hatch>=1.7.0,<1.16", if = ["3.9"]},
-  # Install an older virtualenv that still provides pip/setuptools for Python 3.8
-  # Support was dropped in 21.5.0: https://github.com/pypa/virtualenv/releases/tag/21.5.0
-  {value = "virtualenv<21.5.0", if = ["3.8"]}
+  {value = "hatch>=1.7.0,<1.16", if = ["3.9"]}
 ]
 
 [tool.hatch.envs.test]
