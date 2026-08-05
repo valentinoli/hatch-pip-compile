@@ -66,7 +66,12 @@ class PipCompileResolver(BaseResolver):
     Pip Compile Resolver
     """
 
-    pypi_dependencies: ClassVar[list[str]] = ["pip-tools"]
+    pypi_dependencies: ClassVar[list[str]] = [
+        "pip-tools",
+        # Explicitly add `typing-extensions` to the list of dependencies
+        # to ensure compatibility with Python 3.8-3.10
+        "typing-extensions",
+    ]
     resolver_options: ClassVar[list[str]] = ["--resolver=backtracking", "--strip-extras"]
 
     @property
