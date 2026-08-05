@@ -195,8 +195,6 @@ jobs:
                   python -m pip install -q "hatch~=${{ matrix.hatch_version }}"
                   python -m pip install -q pre-commit
                   python -m pip install -q "${{ github.workspace }}"
-                  # Install an older virtualenv that still provides pip/setuptools for Python 3.8
-                  python -m pip install -q 'virtualenv<20.23.0'
                   hatch --version
             - name: Test Suite
               run: |
