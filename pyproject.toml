@@ -24,7 +24,6 @@ classifiers = [
 dependencies = [
   "hatch>=1.7.0,<2",
   "pip-tools>=6",
-  "typing-extensions",
   "click",
   "rich"
 ]
